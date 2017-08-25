@@ -32,7 +32,8 @@ function dutchPay(numMember, totalAmount, unitMoney) {
     return [payPerson, payMore];
   }
 }
-console.log(dutchPay(3, 10000, 1000)); // 3명이서 10,000을 1000원의 최소단위로 나눈 결과
+console.log(dutchPay(3, 10000, 1000)); // 3명이 10,000을 1000원의 최소단위로 나눈 결과
+console.log(dutchPay(9, 1000000, 10000)); // 9명이 1,000,000을 10,000원의 최소단위로 나눈 결과
 
 
 
