@@ -43,12 +43,15 @@ function dutchPay() {
   let numMember = numMemberInput.value;
   let totalAmount = totalAmountInput.value;
 
-  let unitMoney;
+  let unitMoney = 1000;
   // 소수점 이하는 버리는 함수를 이용하여 totalAmount를 unitMoney로 나누고  numMember로 나눈 결과값의 소수점 이하를 버린 값에 다시 unitMoney를 곱한다.
   for(var i = 0; i < radioArray.length; i++) {
     if(radioArray[i].checked === true) {
       unitMoney = radioArray[i].value;
     }
+  }
+  if (){ // 만약 입력 값이 문자이면 숫자로 입력하라고 안내를 한다.
+
   }
 
   let today = new Date();
@@ -60,7 +63,6 @@ function dutchPay() {
   let payPerson = amountPerson * unitMoney; // 다수는 소수점 이하는 버린 최소단위별로 금액 지불.
   let payMore = totalAmount - (payPerson * (numMember-1));
   // 소수점 이하를 버린 액수 만큼 오차가 발생하므로 1/n 값과 인원수에서 한명을 뺀 값을 곱하여 총 금액에서 뺀다.
-
   // if(!Number.isInteger(numMember)) return console.log(`인원은 2명 이상, 100명 미만으로 숫자만 입력해주세요.`);
   // if(!Number.isInteger(totalAmount)) return console.log(`금액은 10,000원 이상 1,000,000 미만의 숫자만 입력해주세요.`);
   // if(2 > n && n > 100) return console.log(`인원은 2명 이상, 100명 미만으로 숫자만 입력해주세요.`);
