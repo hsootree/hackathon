@@ -30,7 +30,8 @@ const totalAmountInput = document.getElementById('totalAmount');
 const tenThousandInput = document.getElementById('tenThousand');
 const oneThousandInput = document.getElementById('oneThousand');
 const oneHundredsInput = document.getElementById('oneHundreds');
-const rightZone = document.querySelector('.right');
+const posForm = document.querySelector('.posForm');
+const result = document.querySelector('.result');
 const radioArray = [tenThousandInput, oneThousandInput, oneHundredsInput];
 
 function dutchPay() {
@@ -50,6 +51,8 @@ function dutchPay() {
     }
   }
 
+  let today = new Date();
+
   let dutchPerson = totalAmount / numMember;
   let totalAmountunit = (totalAmount / unitMoney); // 총 금액을 설정된 최소단위로 나눔.
   let payAmount = (totalAmount % numMember); // 총 금액을 인원수로 나눴을 때 나머지
@@ -65,10 +68,10 @@ function dutchPay() {
   // if(totalAmount.length <= unitMoney) return console.log('절삭 금액의 단위가 총 금액보다 클 수 없습니다.');
 
   if( payAmount === 0) {
-    return dutchPayRes(title, name, numMember, dutchPerson, totalAmount);
+    return dutchPayRes(title, name, numMember, dutchPerson, totalAmount, today);
   }
   else {
-    return dutchPayRes(title, name, numMember, payPerson, payMore, totalAmount);
+    return dutchPayResTwo(title, name, numMember, payPerson, payMore, totalAmount, today);
   }
 
   
@@ -81,26 +84,82 @@ function dutchPay() {
 //   // rightZone.style.display = none;
 // };
 
-function dutchPayRes(title, name, numMember, dutchPerson, totalAmount) {
+function dutchPayRes(title, name, numMember, dutchPerson, totalAmount, today) {
+  posForm.style.display = 'none';
+  result.style.display = 'block';
+  let id = 0;
+  let time = String(today).substring(0,10);
+  const receiptOne = `<h4>title. ${title}</h4>
+  <p>time. ${time}</p>
+  <p>name. ${name}</p>
+  <table>
+    <th>
+      <td>no.</td>
+      <td>금액</td>
+    </th>
+    <tr>
+      <td>${id+1}</td>
+      <td>${dutchPerson}원</td>
+    </tr>
+    <tr>
+      <td>Total: </td>
+      <td>${totalAmount}원</td>
+    </tr>
+  </table>
+  <button id="reRes">다시 계산</button>`
+  document.querySelector('.result').insertAdjacentHTML('afterbegin', receiptOne);
+  document.getElementById('reRes').addEventListener('click', reResFunc);
   // console.log(dutchPerson);
   // rightZone.style.display = none;
-  console.log(title);
-  console.log(name);
-  console.log(numMember);
-  console.log(dutchPerson);
-  console.log(totalAmount);
+  // console.log(title);
+  // console.log(name);
+  // console.log(numMember);
+  // console.log(dutchPerson);
+  // console.log(totalAmount);
 }
 
-function dutchPayResTwo(title, name, numMember, payPerson, payMore, totalAmount) {
-  console.log(title);
-  console.log(name);
-  console.log(numMember);
-  console.log(payPerson);
-  console.log(payMore);
-  console.log(totalAmount);
+function dutchPayResTwo(title, name, numMember, payPerson, payMore, totalAmount, today) {
+  posForm.style.display = 'none';
+  result.style.display = 'block';
+  let id = 0;
+  let time = String(today).substring(0,10);
+  const receiptTwo = `<h4>title. ${title}</h4>
+  <p>date. ${time}</p>
+  <p>name. ${name}</p>
+  <table>
+    <th>
+      <td>no.</td>
+      <td>금액</td>
+    </th>
+    <tr>
+      <td>${numMember-1}</td>
+      <td>${payPerson}</td>
+    </tr>
+    <tr>
+      <td>${1}</td>
+      <td>${payMore}</td>
+    </tr>
+    <tr>
+      <td>Total: </td>
+      <td>${totalAmount}원</td>
+    </tr>
+  </table>
+  <button id="reRes">다시 계산</button>`
+  document.querySelector('.result').insertAdjacentHTML('afterbegin', receiptTwo);
+  document.getElementById('reRes').addEventListener('click', reResFunc);
+  // console.log(title);
+  // console.log(name);
+  // console.log(numMember);
+  // console.log(payPerson);
+  // console.log(payMore);
+  // console.log(totalAmount);
 }
 
 // console.log([numMember + '중' + (numMember-1) + '명은 ' + payPerson + '원을 내고 다른 한 명만 ' + payMore + ]);
+
+function reResFunc() {
+  location.replace('file:///Users/minyoungkim/Documents/hackathon/1perN/index.html');
+}
 
 function reset() {
   titleInput.value = '';
