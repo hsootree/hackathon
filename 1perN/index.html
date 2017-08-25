@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>오늘 밥값은 누가내?!</title>
+  <!-- <link rel="stylesheet" href="hackathon.css"> -->
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i');
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    html, body, .container {
+      width: 100%;
+      height: 100%;
+    }
+    body {
+      margin: 0;
+      font-size: 1rem;
+      color: #333;
+      background-image: url('img/linedpaper.png');
+    }
+    .container {
+      margin: 0 auto;
+      position: relative;
+    }
+    .left, .right {
+      width: 50%;
+      height: 100%;
+      display: inline-block;
+      float: left;
+    }
+    .left {
+      /* background-color: #eee; */
+    }
+    h1, h2 {
+      font-weight: 100;
+      letter-spacing: -0.8rem;
+      font-size: 8rem;
+      margin: 0;
+    }
+    h1 {
+      position: absolute;
+      top: 42%;
+      left: 15%;
+      padding: 0.5rem 1rem 0.5rem 0.5rem;
+      transform: translateX(-50%);
+      transform: translateY(-50%);
+      color: white;
+      background-color: #ec644c;
+    }
+    h2 {
+      position: absolute;
+      color: #ec644c;
+      top: 62%;
+      left: 15%;
+      padding: 1rem;
+      transform: translateX(-50%);
+      transform: translateY(-50%);
+    }
+    h3 {
+      font-size: 1.2rem;
+      color: #dcdcdc;
+      text-align: left;
+      margin: 1rem 0 2rem 0;
+      font-weight: 500;
+      padding-left: 1rem;
+    }
+    h6 {
+      position: absolute;
+      margin: 0;
+      bottom: 1.4rem;
+      left: 50%;
+      transform: translateX(-50%);
+      letter-spacing: 0.04rem;
+    }
+    p {
+      margin: 0;
+      color:#999;
+      position: absolute;
+      bottom: 0.8rem;
+      left: 1.6rem;
+    }
+    /* input {
+      width: 100%;
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border: 1px solid #eee;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+    } */
+    
+    .posForm {
+      position: absolute;
+      top: 50%;
+      left: 58%;
+      transform: translateX(-50%);
+      transform: translateY(-50%);
+      width: 25%;
+      height: 60%;
+      padding: 1rem;
+      background-color: #444;
+      border-radius: 0.8rem;
+      color: #e6b098;
+      font-size: 0.8rem;
+      box-shadow: 0px 0.5rem 0px #222;
+    }
+    .posForm input[type="text"] {
+      width: 100%;
+      padding: 1rem;
+      border-radius: 0.4rem;
+      border: 0;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+      letter-spacing: -0.05rem;
+      font-weight: 300;
+      color: #385046;
+      background-color: #ccc;
+      box-shadow: inset 4px 4px 0 #aaa;
+    }
+    .posForm input[type="text"]::placeholder {
+      color: #777;
+    }
+    #title {
+      width: 80%;
+    }
+    #name {
+      width: 50%;
+      display: block;
+    }
+    #quantity {
+      width: 30%;
+      margin-right: 3%;
+    }
+    #total {
+      width: 66%;
+    }
+    ul {
+      list-style: none;
+      padding-left: 0; 
+      margin: 0;
+      display: inline-block;
+    }
+    ul li {
+      display: inline-block;
+      margin: 0;
+    }
+    .posForm button {
+      padding: 1rem;
+      font-size: 1rem;
+      border: 0;
+      border-radius: 2rem;
+      margin-right: 1rem;
+      font-weight: 700;
+      color: white;
+      height: 4rem;
+      width: 4rem;
+      /* position: absolute; */
+      float: left;
+    }
+    .posForm button:first-of-type {
+      background-color: #ec644c;
+      left: 6rem;
+      bottom: 3rem;
+      /* box-shadow: 0 2px 0 #c3322d; */
+    }
+    .posForm button:first-of-type:active {
+      /* box-shadow: inset 0 2px 0 #c3322d; */
+    }
+    .posForm button:last-of-type {
+      background-color: #53c60f;
+      left: 1.2rem;
+      bottom: 3rem;
+      /* box-shadow: 0 2px 0 #018b3d; */
+    }
+    .posForm button:last-of-type:active {
+      /* box-shadow: inset 0 2px 0 #018b3d; */
+    }
+    .posForm input[type="radio"]{
+      display: none;
+    }
+    label {
+      font-size: 1rem;  
+      display: inline-block;
+      text-align: center;
+      border-radius: 2rem;
+      height: 4rem;
+      width: 4rem;
+      line-height: 4rem;
+      color: #333;
+      background-color: #f0b300;
+      margin-right: 0rem;
+      font-weight: 300;
+      cursor: pointer;
+      float: left;
+    }
+    /* label:hover, label:visited {
+      background-color: #ec644c;
+      color: white;
+    }
+    label:active {
+      box-shadow: inset 0 2px 0 #333745;
+    } */
+
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="left">
+    
+      <h1>오늘 밥값은</h1>
+      <h2>누가내 !?</h2>
+
+      <h6>copyright &copy; minyoung kim, hyesun choi.</h6>
+
+    </div>
+
+    <div class="right">
+
+      <article class="posForm"> 
+
+        <h3>Let's go dutch!</h3>
+        <input type="text" name="" id="title" placeholder="8월 25일 점심값!">
+        <input type="text" name="" id="name" placeholder="김민영 대리">
+        <input type="text" name="quantity" id="quantity" placeholder="인원 수*">
+        <input type="text" name="money" id="total" placeholder="총 금액*">
+        <ul>
+          <!-- <li><p>계산 최소단위*</p></li> -->
+          <li><label for="tenThousand" checked><input type="radio" name="total" id="tenThousand" checked>10,000</label></li>
+          <li><label for="oneThousand"><input type="radio" name="total" id="oneThousand">1,000</label></li>
+          <li><label for="oneHundreds"><input type="radio" name="total" id="oneHundreds">100</label></li>
+          <li><button>계산</button></li>
+          <li><button>취소</button></li>
+        </ul>
+        
+        <p>* 표시 항목은 필수 입력 항목입니다.</p>
+        
+      </article>
+
+      <!-- <article class="afterResult">
+        <h2>8월 마지막주 회식비 결산</h2>
+        <p>작성자: 김민영</p>
+        <table>
+          <th>
+            <td>no.</td>
+            <td>이름</td>
+            <td>금액</td>
+            <td>비고</td>
+          </th>
+          <tr>
+            <td>1</td>
+            <td>김대리님</td>
+            <td>30,000원</td>
+            <td>승진기념 몰아주기</td>
+          </tr>
+        </table>
+        <button>다시 계산</button>
+      </article> -->
+
+    </div>
+ 
+  </div>
+
+  <script src="hackathon.js"></script>
+</body>
+</html>
