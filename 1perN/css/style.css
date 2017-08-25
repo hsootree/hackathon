@@ -1,10 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
 @font-face {
 font-family: 'LCD-Bold';
-src:  url('fonts/LCD-Bold.ttf.woff') format('woff'),
-url('fonts/LCD-Bold.ttf.svg#LCD-Bold') format('svg'),
-url('fonts/LCD-Bold.ttf.eot'),
-url('fonts/LCD-Bold.eot?#iefix') format('embedded-opentype'); 
+src:  url('../fonts/LCD-Bold.ttf.woff') format('woff'),
+url('../fonts/LCD-Bold.ttf.svg#LCD-Bold') format('svg'),
+url('../fonts/LCD-Bold.ttf.eot'),
+url('../fonts/LCD-Bold.eot?#iefix') format('embedded-opentype'); 
 font-weight: normal;
 font-style: normal;
 }
@@ -20,7 +21,7 @@ body {
   font-size: 1rem;
   color: #333;
   font-family: 'Roboto', sans-serif;
-  background-image: url('img/linedpaper.png');
+  background-image: url('../img/linedpaper.png');
 }
 .container {
   margin: 0 auto;
@@ -35,8 +36,9 @@ body {
 h1, h2 {
   font-weight: 100;
   letter-spacing: -0.8rem;
-  font-size: 8rem;
+  font-size: 10rem;
   margin: 0;
+  transition: 0.4s;
 }
 h1 {
   position: absolute;
@@ -51,11 +53,27 @@ h1 {
 h2 {
   position: absolute;
   color: #ec644c;
-  top: 62%;
+  top: 50%;
   left: 15%;
   padding: 1rem;
   transform: translateX(-50%);
   transform: translateY(-50%);
+  animation-name: moveandopacity;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  
+}
+@keyframes moveandopacity {
+  /* keyframe */
+  from {
+    top: 55%;
+    opacity: 0;
+  }
+  /* keyframe */
+  to {
+    top: 50%;
+    opacity: 1;
+  }
 }
 h3 {
   font-size: 1.2rem;
@@ -69,8 +87,8 @@ h6 {
   position: absolute;
   margin: 0;
   bottom: 1.4rem;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 1.4rem;
+  
   letter-spacing: 0.04rem;
 }
 span {
@@ -110,6 +128,7 @@ p:last-of-type {
   color: #e6b098;
   font-size: 0.8rem;
   box-shadow: 0px 0.5rem 0px #222;
+  /* display: none; */
 }
 .posForm input {
   width: 100%;
@@ -171,7 +190,8 @@ ul li {
   color: white;
   height: 4rem;
   width: 4rem;
-  float: right;      
+  float: right;
+  transition: 0.4s;      
 }
 #calBtn {
   background-color: #53c60f;
@@ -199,8 +219,105 @@ label {
   font-weight: 300;
   cursor: pointer;
   float: left;
+  transition: 0.4s;
+}
+label:hover {
+  background-color: #f0b300;
+  color: white;
 }
 input[type="radio"]:checked + label {
   background-color: #f0b300;
   color: white;
+}
+
+.result {
+  font-family: 'Roboto Slab', serif;
+  letter-spacing: 0.04rem;
+  position: absolute;
+  top: 50%;
+  left: 58%;
+  transform: translateX(-50%);
+  transform: translateY(-50%);
+  width: 25%;
+  height: 720px;
+  display: none;
+  /* background-color: #fff; */
+  background-image: url('../img/groovepaper.png');
+  padding: 1rem;
+  font-size: 1rem;
+  color: #333;
+  animation-name: moveresult;
+  animation-duration: 5s;
+  animation-iteration-count: 1;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.pos {
+  z-index: 100;
+  position: absolute;
+  right: 255px;
+  bottom: 0;
+  width: 480px;
+  display: none;
+}
+
+table {
+  font-size: 0.8rem;
+  width: 100%;
+}
+
+tr {
+  width: 100%;
+  
+}
+
+.tableNo {
+  width: 30%;
+  padding: 1rem 0;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.tableAmount {
+  width: 70%;
+  padding: 1rem 0;
+  text-align: right;
+  border-bottom: 1px solid #ddd;
+}
+
+@keyframes moveresult {
+  /* keyframe */
+  from {
+    top: 100%;
+  }
+  /* keyframe */
+  to {
+    top: 50%;
+  }
+}
+
+.result h4 {
+  margin: 0.8rem 0;
+  padding-bottom: 0.8rem;
+  font-size: 0.8rem;
+  border-bottom: 1px solid #999;
+}
+
+.result p {
+  color: #666;
+  margin: 0.2rem 0;
+  font-size: 0.8rem;
+}
+
+#reRes {
+  border: 0;
+  background-image: url('../img/reload.svg');
+  height: 40px;
+  width: 40px;
+  margin: 0 auto;
+  display: inline-block;
+  transition: 0.3s;
+}
+#reRes:hover {
+  transform: rotate(180deg);
 }
