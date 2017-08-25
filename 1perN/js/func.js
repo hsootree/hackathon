@@ -50,9 +50,6 @@ function dutchPay() {
       unitMoney = radioArray[i].value;
     }
   }
-  if (){ // 만약 입력 값이 문자이면 숫자로 입력하라고 안내를 한다.
-
-  }
 
   let today = new Date();
 
@@ -63,6 +60,7 @@ function dutchPay() {
   let payPerson = amountPerson * unitMoney; // 다수는 소수점 이하는 버린 최소단위별로 금액 지불.
   let payMore = totalAmount - (payPerson * (numMember-1));
   // 소수점 이하를 버린 액수 만큼 오차가 발생하므로 1/n 값과 인원수에서 한명을 뺀 값을 곱하여 총 금액에서 뺀다.
+
   // if(!Number.isInteger(numMember)) return console.log(`인원은 2명 이상, 100명 미만으로 숫자만 입력해주세요.`);
   // if(!Number.isInteger(totalAmount)) return console.log(`금액은 10,000원 이상 1,000,000 미만의 숫자만 입력해주세요.`);
   // if(2 > n && n > 100) return console.log(`인원은 2명 이상, 100명 미만으로 숫자만 입력해주세요.`);
@@ -95,22 +93,25 @@ function dutchPayRes(title, name, numMember, dutchPerson, totalAmount, today) {
   <p>time. ${time}</p>
   <p>name. ${name}</p>
   <table>
-    <th>
-      <td>no.</td>
-      <td>금액</td>
-    </th>
     <tr>
-      <td>${id+1}</td>
-      <td>${dutchPerson}원</td>
+      <td class="tableNo">no.</td>
+      <td class="tableAmount">amount</td>
     </tr>
     <tr>
-      <td>Total: </td>
-      <td>${totalAmount}원</td>
+      <td class="tableNo">${id+1}</td>
+      <td class="tableAmount">${dutchPerson}krw</td>
     </tr>
+    <tr>
+      <td class="tableNo">Total: </td>
+      <td class="tableAmount">${totalAmount}krw</td>
+    </tr>
+    
   </table>
-  <button id="reRes">다시 계산</button>`
+  <h5>누가내 닷컴 팀<br>git. https://github.com/hsootree/hackathon<br>at Fastcampus</h5>
+  <img src="img/reload.svg" id="reRes">`
   document.querySelector('.result').insertAdjacentHTML('afterbegin', receiptOne);
   document.getElementById('reRes').addEventListener('click', reResFunc);
+  document.querySelector('.pos').style.display = 'block';
   // console.log(dutchPerson);
   // rightZone.style.display = none;
   // console.log(title);
@@ -129,26 +130,28 @@ function dutchPayResTwo(title, name, numMember, payPerson, payMore, totalAmount,
   <p>date. ${time}</p>
   <p>name. ${name}</p>
   <table>
-    <th>
-      <td>no.</td>
-      <td>금액</td>
-    </th>
     <tr>
-      <td>${numMember-1}</td>
-      <td>${payPerson}</td>
+      <td class="tableNo">no.</td>
+      <td class="tableAmount">amount</td>
     </tr>
     <tr>
-      <td>${1}</td>
-      <td>${payMore}</td>
+      <td class="tableNo">${numMember-1}</td>
+      <td class="tableAmount">${payPerson}krw</td>
     </tr>
     <tr>
-      <td>Total: </td>
-      <td>${totalAmount}원</td>
+      <td class="tableNo">${1}</td>
+      <td class="tableAmount">${payMore}</td>
+    </tr>
+    <tr>
+      <td class="tableNo">Total: </td>
+      <td class="tableAmount"${totalAmount}krw</td>
     </tr>
   </table>
-  <button id="reRes">다시 계산</button>`
+  <h5>누가내 닷컴 팀<br>git. https://github.com/hsootree/hackathon<br>at Fastcampus</h5>
+  <img src="img/reload.svg" id="reRes">`
   document.querySelector('.result').insertAdjacentHTML('afterbegin', receiptTwo);
   document.getElementById('reRes').addEventListener('click', reResFunc);
+  document.querySelector('.pos').style.display = 'block';
   // console.log(title);
   // console.log(name);
   // console.log(numMember);
@@ -175,6 +178,12 @@ function reset() {
 
 document.getElementById('calBtn').addEventListener('click', dutchPay);
 document.getElementById('cancelBtn').addEventListener('click', reset);
+
+
+
+// document.getElementById('h2').addEventListener('load', function() {
+//   document.getElementById('h2').style.opacity = 1;
+// })
 // console.log(res);
 // console.log(dutchPay(3, 10000, 1000)); // 3명이 10,000을 1000원의 최소단위로 나눈 결과
 // console.log(dutchPay(9, 1000000, 10000)); // 9명이 1,000,000을 10,000원의 최소단위로 나눈 결과
